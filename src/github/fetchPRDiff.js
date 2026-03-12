@@ -12,8 +12,8 @@
  *   early gate to avoid sending irrelevant data to the AI.
  */
 
-import parseDiff from 'parse-diff';
 import { minimatch } from 'minimatch';
+import parseDiff from 'parse-diff';
 import { createContextLogger } from '../utils/logger.js';
 
 const log = createContextLogger('fetchPRDiff');
