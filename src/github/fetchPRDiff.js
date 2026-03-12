@@ -13,7 +13,7 @@
  */
 
 import parseDiff from 'parse-diff';
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 import { createContextLogger } from '../utils/logger.js';
 
 const log = createContextLogger('fetchPRDiff');
