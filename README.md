@@ -7,19 +7,19 @@ A production-grade AI-powered pull request review bot built with Node.js, GitHub
 ## Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                     GitHub Actions Runner                        │
+┌───────────────────────────────────────────────────────────────────┐
+│                     GitHub Actions Runner                         │
 │                                                                   │
-│  pull_request event ──► src/index.js (entry + env validation)   │
+│  pull_request event ──► src/index.js (entry + env validation)     │
 │                               │                                   │
-│                    ┌──────────▼──────────┐                       │
-│                    │  reviewProcessor.js  │  ← orchestrator      │
-│                    └──────────┬──────────┘                       │
-│          ┌──────────┬─────────┼──────────┬──────────┐           │
-│          ▼          ▼         ▼          ▼          ▼           │
-│    fetchPRDiff  ruleFilter  analyzeCode  ruleFilter  postReview  │
-│    (GitHub API) (pre-filter) (OpenAI)  (post-filter)(GitHub API) │
-└─────────────────────────────────────────────────────────────────┘
+│                    ┌──────────▼──────────┐                        │
+│                    │  reviewProcessor.js │  ← orchestrator        │
+│                    └──────────┬──────────┘                        │
+│          ┌──────────┬─────────┼──────────┬──────────┐             │
+│          ▼          ▼         ▼          ▼          ▼             │
+│    fetchPRDiff  ruleFilter  analyzeCode  ruleFilter  postReview   │
+│    (GitHub API) (pre-filter) (OpenAI)  (post-filter)(GitHub API)  │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ### Module Responsibilities
