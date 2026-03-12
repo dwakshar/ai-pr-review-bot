@@ -210,4 +210,4 @@ The token budget is capped at 50k tokens per run by default.
 
 ## License
 
-MIT - See "./LICENSE"
+MIT — see [LICENSE](./LICENSE)
