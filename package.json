@@ -1,0 +1,39 @@
+{
+  "name": "ai-pr-review-bot",
+  "version": "1.0.0",
+  "description": "AI-powered GitHub Pull Request review bot using OpenAI",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "lint": "eslint src/ --ext .js"
+  },
+  "dependencies": {
+    "openai": "^4.28.0",
+    "@octokit/rest": "^21.0.0",
+    "@octokit/plugin-retry": "^7.0.0",
+    "@octokit/plugin-throttling": "^9.0.0",
+    "parse-diff": "^0.11.1",
+    "p-retry": "^6.2.0",
+    "winston": "^3.11.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0"
+  },
+  "keywords": [
+    "github-actions",
+    "code-review",
+    "openai",
+    "pull-request",
+    "automation",
+    "ci-cd"
+  ],
+  "license": "MIT"
+}

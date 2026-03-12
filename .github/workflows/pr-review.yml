@@ -1,0 +1,57 @@
+name: AI Pull Request Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Limit concurrent reviews per PR to avoid race conditions
+concurrency:
+  group: pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    # Only run on PRs that are not drafts
+    if: github.event.pull_request.draft == false
+
+    permissions:
+      pull-requests: write  # Required to post review comments
+      contents: read        # Required to fetch diff
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch enough history for diff computation
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run AI PR Review
+        id: ai_review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          # Optional: pass run ID for deduplication
+          RUN_ID: ${{ github.run_id }}
+        run: node src/index.js
+        # Continue even if review fails — don't block merges on AI failures
+        continue-on-error: true
+
+      - name: Report review status
+        if: steps.ai_review.outcome == 'failure'
+        run: |
+          echo "::warning::AI review encountered an error. Review was skipped to avoid blocking the PR."

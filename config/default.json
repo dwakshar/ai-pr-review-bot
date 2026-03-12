@@ -1,0 +1,50 @@
+{
+  "_comment": "AI PR Review Bot configuration. Copy to .pr-review-config.json in repo root to customize.",
+
+  "review": {
+    "maxFilesPerReview": 20,
+    "maxLinesPerFile": 500,
+    "maxCommentsPerReview": 15,
+    "minChangedLinesForReview": 5,
+    "skipDraftPRs": true
+  },
+
+  "ai": {
+    "model": "gpt-4o",
+    "temperature": 0.2,
+    "maxTokensPerRequest": 4096,
+    "maxTokensPerFile": 2000
+  },
+
+  "filters": {
+    "ignoredFilePatterns": [
+      "**/*.lock",
+      "**/*.min.js",
+      "**/*.min.css",
+      "**/dist/**",
+      "**/build/**",
+      "**/vendor/**",
+      "**/__snapshots__/**",
+      "**/*.generated.*",
+      "**/coverage/**"
+    ],
+    "ignoredExtensions": [
+      ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico",
+      ".pdf", ".zip", ".tar", ".gz",
+      ".woff", ".woff2", ".ttf", ".eot"
+    ],
+    "severityThreshold": "info",
+    "ignoreCategories": ["formatting", "whitespace"]
+  },
+
+  "guidelines": {
+    "enabled": false,
+    "guidelinesFile": "CONTRIBUTING.md",
+    "maxGuidelinesTokens": 500
+  },
+
+  "deduplication": {
+    "enabled": true,
+    "lookbackDays": 7
+  }
+}
