@@ -12,7 +12,7 @@
  *   early gate to avoid sending irrelevant data to the AI.
  */
 
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 import parseDiff from 'parse-diff';
 import { createContextLogger } from '../utils/logger.js';
 
