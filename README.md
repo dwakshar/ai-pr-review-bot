@@ -1,5 +1,10 @@
 <img src="banner.jpg"/>
 
+[![Node.js](https://img.shields.io/badge/Runtime-Node.js_20-339933?style=flat-square&logo=node.js&logoColor=white)](#)
+[![OpenAI](https://img.shields.io/badge/AI-OpenAI_API-412991?style=flat-square&logo=openai&logoColor=white)](#)
+[![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#)
+[![License](https://img.shields.io/badge/License-MIT-6366f1?style=flat-square)](#license)
+
 A production-grade AI-powered pull request review bot built with Node.js, GitHub Actions, and OpenAI. It analyzes code diffs and posts contextual inline review comments directly on GitHub pull requests.
 
 ---
