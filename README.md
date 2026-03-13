@@ -1,5 +1,3 @@
-# AI PR Review Bot
-
 <img src="banner.jpg"/>
 
 A production-grade AI-powered pull request review bot built with Node.js, GitHub Actions, and OpenAI. It analyzes code diffs and posts contextual inline review comments directly on GitHub pull requests.
