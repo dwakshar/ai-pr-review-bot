@@ -13,7 +13,7 @@ A production-grade AI-powered pull request review bot built with Node.js, GitHub
 
 ---
 
-## Architecture Overview
+## ✦ Architecture Overview
 
 ```
 ┌───────────────────────────────────────────────────────────────────┐
@@ -48,7 +48,7 @@ A production-grade AI-powered pull request review bot built with Node.js, GitHub
 
 ---
 
-## Setup
+## ✦ Setup
 
 ### 1. Add Secrets to Your Repository
 
@@ -91,7 +91,7 @@ Create `.pr-review-config.json` in your repository root to customize behavior:
 
 ---
 
-## Key Design Decisions
+## ✦ Key Design Decisions
 
 ### Why review batching instead of individual comments?
 The GitHub Reviews API (`createReview`) bundles all inline comments into a single review event. This means contributors receive one notification instead of N, and the PR timeline stays clean.
@@ -111,7 +111,7 @@ PRs with multiple commits (`synchronize` events) would re-trigger the bot. Witho
 
 ---
 
-## Configuration Reference
+## ✦ Configuration Reference
 
 See `config/default.json` for all available options with documentation.
 
@@ -124,7 +124,7 @@ config/
 
 ---
 
-## Running Locally
+## ✦ Running Locally
 
 ```bash
 # Install dependencies
@@ -147,7 +147,7 @@ DEBUG=true node src/index.js
 
 ---
 
-## Running Tests
+## ✦ Running Tests
 
 ```bash
 npm test
@@ -156,7 +156,7 @@ npm run test:coverage
 
 ---
 
-## Project Structure
+## ✦ Project Structure
 
 ```
 ai-pr-review-bot/
@@ -189,7 +189,7 @@ ai-pr-review-bot/
 
 ---
 
-## Extending the Bot
+## ✦ Extending the Bot
 
 ### Adding a new file filter
 Add a check in `src/engine/ruleFilter.js` → `shouldSkipFile()`. Return `{ skip: true, reason: '...' }`.
@@ -205,7 +205,7 @@ The severity enum is defined in `postReviewComment.js` → `SEVERITY_LABELS`. Ad
 
 ---
 
-## Cost Estimates
+## ✦ Cost Estimates
 
 | PR Size | Files | ~Tokens | ~Cost (GPT-4o) |
 |---------|-------|---------|----------------|
@@ -217,6 +217,6 @@ The token budget is capped at 50k tokens per run by default.
 
 ---
 
-## License
+## ✦ License
 
 MIT — see [LICENSE](./LICENSE)
